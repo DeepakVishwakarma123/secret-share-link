@@ -26,7 +26,7 @@ app.use(cors({
 import testrouter from "./routes/dummy-route.js";
 import LinkRouter from "./routes/Link-route.js";
 app.use('/demo',testrouter)
-app.use('/vanishsecure',LinkRouter)
+app.use('/secure',LinkRouter)
 
 export default app
 
