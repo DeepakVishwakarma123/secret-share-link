@@ -18,7 +18,7 @@ app.use(express.urlencoded(
 ))
 
 app.use(cors({
-    origin:[process.env.frontend],
+    origin:["http://localhost:5173"],
     methods:["get","post","options","put","delete"],
     credentials:true
 }))
