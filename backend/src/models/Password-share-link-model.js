@@ -20,7 +20,7 @@ const passwordShareLinkSchema=new Schema(
         LinkdeleteTime:{
             type:Date,
             expires:0,
-            default:new Date().setSeconds(180)
+            default:new Date().setSeconds(300)
         }
     }
 )
@@ -28,6 +28,7 @@ const passwordShareLinkSchema=new Schema(
 
 
 const passwordShareLink=mongoose.model('passwordsharelink',passwordShareLinkSchema)
+
 
 export { passwordShareLink }
 
