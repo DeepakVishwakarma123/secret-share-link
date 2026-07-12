@@ -19,8 +19,8 @@ const passwordShareLinkSchema=new Schema(
         },
         LinkdeleteTime:{
             type:Date,
-            expires:0,
-            default:new Date().setSeconds(300)
+            default:Date.now(),   
+            expires:180,
         }
     }
 )
