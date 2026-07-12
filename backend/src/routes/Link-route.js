@@ -5,7 +5,7 @@ const LinkRouter=Router()
 
 //route /vanishlink/ reqeust to these routes
 
-LinkRouter.route('/generateLink').get(GenerateLink)
+LinkRouter.route('/generateLink').post(GenerateLink)
 LinkRouter.route('/getsecret/:randomid').get(GetSecretandKey)
 
 
