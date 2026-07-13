@@ -33,7 +33,7 @@ function CreateSecretLink() {
           let data=await response.json()
           let randomLinkId=data["randomLinkId"]
           let secretKeyHashBang="#"+secretKey
-          let url=`http://localhost:4000/secure/getsecret/${randomLinkId}`+secretKeyHashBang
+          let url=`http://localhost:5173/${randomLinkId}`+secretKeyHashBang
           console.log("the url is here now",url);
           SetLink(url)
           console.log("user data is here",data);
@@ -47,8 +47,8 @@ function CreateSecretLink() {
     }
     let memoziedfun=useCallback(CreateLinkSharePassword,[Secret])
     return (
-           <div className="bg-gray-200 p-4 flex justify-center items-center">
-           <div className="bg-teal-300 w-[60%] p-4 grid gap-4">
+           <div className="bg-gray-200 p-4 h-[50vh] flex justify-center items-center">
+           <div className="bg-teal-300 w-[60%] p-6 grid gap-4">
             <div>
             <h2>Create a one-time Link</h2>
             <p>your secret is encrypted in broswer before it leaves</p>
