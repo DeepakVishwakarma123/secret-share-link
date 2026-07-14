@@ -9,7 +9,8 @@ async function GetSecretandKey(req,res) {
     if(savedDocument.length===0)
     {
         res.status(404).json(
-            {
+            {    
+                isDeleted:true,
                 "message":"requested data is not found"
             }
         )
