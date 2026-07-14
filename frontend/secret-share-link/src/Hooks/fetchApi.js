@@ -20,8 +20,15 @@ async function SendDataToApi(url,bodyObject) {
     }
 }
 
-async function GetDataFromApi() {
+async function GetDataFromApi(url) {
 
+  try {
+      let response=await fetch(url)
+      let jsondata=await response.json()
+      return jsondata
+  } catch (error) {
+     return Promise.reject("can not able to communicate to the server")
+  }
 }
 
 export {SendDataToApi,GetDataFromApi}
