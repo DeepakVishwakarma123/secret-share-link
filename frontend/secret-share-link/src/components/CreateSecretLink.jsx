@@ -54,10 +54,10 @@ function CreateSecretLink() {
             <p>your secret is encrypted in broswer before it leaves</p>
             </div>
             <form className="flex flex-col gap-2">
-                <textarea id="secret" onChange={
+                <textarea id="secret"  onChange={
                     (e) => SetSecret(e.target.value) 
-                } required="Please Fill The Field"  name="secret" rows="4" cols="55" value={Secret} className="border-2 bg-amber-300" autoFocus placeholder="Enter a Secret here.Get a secure one-time link in return"></textarea>
-                <button type="button" onClick={memoziedfun} className="bg-purple-500 flex justify-center items-center cursor-pointer w-[15%] p-2">Create Link</button>
+                } required="Please Fill The Field"  name="secret" rows="4" cols="55" value={Secret} className="border-2 resize-none bg-amber-300" autoFocus placeholder="Enter a Secret here.Get a secure one-time link in return"></textarea>
+                <button type="button" onClick={memoziedfun} className="bg-purple-500  flex justify-center items-center cursor-pointer w-[15%] p-2">Create Link</button>
                 <PasswordLink Linkid={Link}/>
             </form>
            </div>
