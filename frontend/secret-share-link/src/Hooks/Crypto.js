@@ -58,13 +58,48 @@ async function EncryptData(text)
 
 
 
-async function DecryptData()
-{
-  let ArrayObject=await encryptedData
-  let [cipherTextArrayBuffer,iv,key]=ArrayObject
-  let plainTextArrayBuffer=await subtleObject.decrypt({ name: "AES-GCM", iv }, key,cipherTextArrayBuffer)
+async function DecryptData(data,hash)
+{ 
+  
+  let secretPartObject=data["savedDocument"][0]  
+  let {userEncryptedSecret,privatePart}=secretPartObject
+  let removedHashedString=hash.slice(1)
+  
+  let cipherInt8Array=Uint8Array.fromBase64(
+    userEncryptedSecret ,
+   {
+    "alphabet":"base64url"
+   }
+  )
+  
+  let nonceInt8Array=Uint8Array.fromBase64(
+    privatePart,
+   {
+    "alphabet":"base64url"
+   }
+  )
+  let removedHashedInt8Array=Uint8Array.fromBase64(
+    removedHashedString,
+   {
+    "alphabet":"base64url"
+   }
+  )
+
+  let cryptoKey=await subtleObject.importKey(
+    "raw",
+    removedHashedInt8Array, "AES-GCM", true, [
+    "encrypt",
+    "decrypt",
+  ]
+  )
+
+  
+  console.log("crypto object key",cryptoKey)
+
+  let plainTextArrayBuffer=await subtleObject.decrypt({ name: "AES-GCM",iv:nonceInt8Array },cryptoKey,cipherInt8Array)
   let secretData=decodeObject.decode(plainTextArrayBuffer)
   console.log("the secret data is here",secretData); 
+  return secretData
 }
 
 export {EncryptData,DecryptData,generateKey}
